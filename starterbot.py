@@ -9,7 +9,7 @@ starterbot_id = None
 RTM_READ_DELAY = 1
 EXAMPLE_COMMAND = "do"
 MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
-REDDIT_REGEX = "((\/r\/)|(r\/))(\w+)"
+REDDIT_REGEX = "(| )((\/r\/)|(r\/))(\w+)"
 
 def parse_bot_commands(slack_events):
 
@@ -26,7 +26,7 @@ def parse_bot_commands(slack_events):
 def parse_reddit_links(message_text):
 
 	matches = re.search(REDDIT_REGEX, message_text)
-	return matches.group(4) if matches else None
+	return matches.group(5) if matches else None
 
 def post_reddit_link(subreddit, channel):
 
